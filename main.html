@@ -22,7 +22,7 @@
 			}
 		</style>
 		<script>
-			let mainBoard = Array.from(Array(3)).map(e => [0, 0, 0]), turn = 'X';
+			let mainBoard = Array.from(Array(3)).map(e => [0, 0, 0]);
 			function other (player) {
 				return (player == 'X') ? 'O': 'X';
 			}
@@ -87,7 +87,13 @@
 				return true;
 			}
 			function clickOn (i, j) {
-				return play([i, j], 'X');
+				let run = play([i, j], 'X');
+				if (run) return;
+				let reset = confirm('Do you want to play again?');
+				if (!reset) return;
+				mainBoard = Array.from(Array(3)).map(e => [0, 0, 0]);
+				setBoard();
+				return;
 			}
 
 			function miniMax (board, turn, weight, original) {
