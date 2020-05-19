@@ -79,11 +79,11 @@
 				let won = isWon(mainBoard);
 				if (won) return alert(`${won} won!`);
 				let bestMove = miniMax(mainBoard, 'O', 0, true);
-				if (!bestMove) return alert('Nothing for me to play... :(');
+				if (!bestMove) return alert('It\'s a draw! GG!');
 				mainBoard[bestMove[0]][bestMove[1]] = 'O';
 				setBoard();
 				won = isWon(mainBoard);
-				if (won) return alert(`${won} won!`);
+				if (won) return alert(`${won} won! GG!`);
 				return true;
 			}
 			function clickOn (i, j) {
